@@ -23,11 +23,14 @@ const greetUser = async (email, userName) => {
         subject: 'Thanks for joining',
         text: `Welcome to the app ${userName}, hope you enjoy our sevice.`
     };
-    transporter.sendMail(mailOptions).then(()=>{
-        console.log("Greet mail sent Successfully!");
-    }).catch((e)=>{
-        console.log(e);
-    });
+    if(transporter){
+        // transporter.sendMail(mailOptions).then(()=>{
+        //     console.log("Greet mail sent Successfully!");
+        // }).catch((e)=>{
+        //     console.log(e);
+        // });
+        await transporter.sendMail(mailOptions);
+    }
 };
 
 const userCancellationMail = async (email, userName) =>{
@@ -37,11 +40,14 @@ const userCancellationMail = async (email, userName) =>{
         subject: 'Sorry you are leaving us',
         text: `${userName}, we are sorry that you are leaving us. Care to send an email to tell us why.`
     };
-    transporter.sendMail(mailOptions).then(()=>{
-        console.log("User leaving mail sent Successfully!");
-    }).catch((e)=>{
-        console.log(e);
-    });
+    if(transporter){
+        // transporter.sendMail(mailOptions).then(()=>{
+        //     console.log("User leaving mail sent Successfully!");
+        // }).catch((e)=>{
+        //     console.log(e);
+        // });
+        await transporter.sendMail(mailOptions);
+    }
 };
 
 module.exports = {
