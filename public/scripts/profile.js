@@ -44,7 +44,11 @@ document.getElementById("img-upload").addEventListener("change", async (e) => {
   const files = e.target.files;
   const formData = new FormData();
   formData.append("avatar", files[0]);
-  await uploadImg("/users/me/avatar", formData, token);
+  let resp = await uploadImg("/users/me/avatar", formData, token);
+  if (resp.error) {
+    alert(resp.error);
+    return;
+  }
   document.getElementById(
     "profile-picture"
   ).src = `/users/${id}/avatar?${Math.random()}`;

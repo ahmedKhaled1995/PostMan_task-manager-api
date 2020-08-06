@@ -23,28 +23,19 @@ async function LoadPageData() {
 }
 
 // Adding event to logout
-document.getElementById("log-out").addEventListener("click", (e) => {
+document.getElementById("log-out").addEventListener("click", async (e) => {
   e.preventDefault();
-  logout("/users/logout", token).then(() => {
-    // successful
-    eraseCookie("token");
-    window.location.replace(`../index.html`);
-  });
+  await logout("/users/logout", token);
+  eraseCookie("token");
+  window.location.replace(`../index.html`);
 });
 
 // Handling user delete profile request
-document.getElementById("delete-account").addEventListener("click", (e) => {
-  e.preventDefault();
-  deleteData("/users/me", token)
-    .then((data) => {
-      console.log(data);
-      if (data._id) {
-        // account deleted successfully
-        eraseCookie("token");
-        window.location.replace(`../index.html`);
-      }
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-});
+document
+  .getElementById("delete-account")
+  .addEventListener("click", async (e) => {
+    e.preventDefault();
+    await deleteData("/users/me", token);
+    eraseCookie("token");
+    window.location.replace(`../index.html`);
+  });

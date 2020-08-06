@@ -144,7 +144,9 @@ router.post(
     res.send();
   },
   (error, req, res, next) => {
-    res.status(400).send({ error: error.message });
+    res
+      .status(400)
+      .send({ error: "Please Upload image that doesn't excced 1MB" });
   }
 );
 

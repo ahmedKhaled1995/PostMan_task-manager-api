@@ -24,9 +24,13 @@ form.addEventListener("submit", async (e) => {
   // posting data
   let resp = await postData("/users", userData);
   console.log(resp);
+  if (resp.name === "MongoError") {
+    alert("Email already exists. Please sign in!");
+    return;
+  }
   if (!resp.token) {
     // No token sent, means email is already in use
-    alert("Email is already registered. Please Login");
+    alert(resp.message);
     return;
   }
   setCookie("token", resp.token, 0.5);

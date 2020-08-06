@@ -136,6 +136,7 @@ async function uploadImg(url, data, token) {
     },
     body: data,
   });
+  return response.json();
 }
 
 // The following three methods are fot getting, setting and deleting cockies (source: StackOverflow)
