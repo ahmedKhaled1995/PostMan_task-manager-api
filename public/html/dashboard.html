@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://kit.fontawesome.com/a16ba5e16d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Bootstrap Theme</title>
+  </head>
+
+  <body>
+    <!-- START HERE -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark p-0 px-3">
+      <div class="container">
+        <a class="navbar-brand" href="../html/dashboard.html">Blogen</a>
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-toggle="dropdown"
+              >
+                <img
+                  src="../img/avatar.png"
+                  class="avatar"
+                  id="avatar-img"
+                  alt="avatar"
+                />
+                <span id="user-name">Welcome User</span>
+              </a>
+              <div class="dropdown-menu">
+                <a
+                  href="../html/profile.html"
+                  id="profile"
+                  class="dropdown-item"
+                >
+                  <i class="fa fa-user-circle"></i> Profile</a
+                >
+                <!-- Delete Modal Trigger -->
+                <a
+                  href="../index.html"
+                  class="dropdown-item"
+                  data-toggle="modal"
+                  data-target="#deleteAccountModal"
+                >
+                  <i class="fa fa-trash"></i> Delete Account</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="log-out" href="../index.html">
+                <i class="fa fa-user-times"></i> Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Delete Account Modal Body -->
+    <div class="modal fade" id="deleteAccountModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            You are about to delete your account.<b>
+              Are you sure you want to proceed?</b
+            >
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" id="delete-account">
+              Confirm Delete
+            </button>
+            <button class="btn btn-secondary" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Header -->
+    <header id="main-header" class="bg-primary text-white py-2">
+      <div class="container">
+        <div class="row">
+          <div class="col d-flex align-items-center">
+            <i class="fa fa-cog fa-2x mr-2" aria-hidden="true"></i>
+            <h3 class="align-self-centers">Tasks</h3>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Actions Section (1 button with modal) -->
+    <section id="actions-section" class="py-3 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <!-- Post MODAL TRIGGER -->
+            <button
+              class="btn btn-primary btn-block"
+              data-toggle="modal"
+              data-target="#TaskModal"
+            >
+              <i class="fa fa-plus mr-2" aria-hidden="true"></i>Add Task
+            </button>
+            <!-- Modal Inside -->
+            <div class="modal fade" id="TaskModal">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header bg-primary">
+                    <h5 class="modal-title">Add Task</h5>
+                    <button class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <div class="modal-body">
+                    <form>
+                      <div>
+                        <label for="task-add">Task</label>
+                        <input
+                          id="task-add"
+                          type="text"
+                          class="form-control"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="completed-add">Completed</label>
+                        <select
+                          name="completed-add"
+                          id="completed-add"
+                          class="form-control"
+                        >
+                          <option>True</option>
+                          <option selected>
+                            False
+                          </option>
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="submit"
+                          value="Add Task"
+                          class="form-input btn btn-primary add-task-button"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Dashboard Table Section -->
+    <section id="dashboard-table" class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 order-1">
+            <div class="card">
+              <div class="card-header">
+                <h4>Latest Tasks</h4>
+              </div>
+              <table id="tasks-table" class="table table-striped">
+                <thead class="bg-dark text-white">
+                  <tr>
+                    <th style="width: 10%;">#</th>
+                    <th style="width: 50%;">Task</th>
+                    <th style="width: 20%;">Completed</th>
+                    <th style="width: 10%;"></th>
+                    <th style="width: 10%;"></th>
+                  </tr>
+                </thead>
+                <tbody id="table-body">
+                  <!-- <tr>
+                    <td>1</td>
+                    <td>Post One</td>
+                    <td>Web Development</td>
+                    <td>
+                      <a
+                        class="edit-task table-clickable"
+                        data-toggle="modal"
+                        data-target="#editModal"
+                        href="#"
+                        ><i class="fa fa-pencil"></i
+                      ></a>
+                    </td>
+                    <td>
+                      <a
+                        class="table-clickable"
+                        data-toggle="modal"
+                        data-target="#deleteModal"
+                        href="#"
+                        ><i class="fa fa-trash"></i
+                      ></a>
+                    </td>
+                  </tr> -->
+                </tbody>
+              </table>
+              <!-- Table Pagination -->
+              <nav>
+                <ul class="pagination justify-content-center">
+                  <li id="prev" class="page-item">
+                    <a class="page-link" href="#">Prev</a>
+                  </li>
+                  <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">4</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">5</a>
+                  </li>
+                  <li id="next" class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <!-- Modals -->
+          <!-- 1) Edit Modal -->
+          <div class="modal fade" id="editModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Edit Task</h5>
+                  <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="task-name">Task Name</label>
+                      <input
+                        class="form-control"
+                        type="text"
+                        id="task-name-edit"
+                        placeholder="Task..."
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="completed">Completed</label>
+                      <select class="form-control" id="task-completed-edit">
+                        <option>True</option>
+                        <option>False</option>
+                      </select>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    id="update-button"
+                    class="btn btn-primary"
+                    data-dismiss="modal"
+                  >
+                    Update
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Delete Modal -->
+          <div class="modal fade" id="deleteModal">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Confirm Delete</h5>
+                  <button class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                  You are about to delete your Task.<b>
+                    Are you sure you want to proceed?</b
+                  >
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-danger" id="delete-task">
+                    Confirm Delete
+                  </button>
+                  <button class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Modals -->
+          <div class="col-md-3 order-0">
+            <img
+              src="../img/avatar.png"
+              id="profile-picture"
+              alt="avatar"
+              class="img-fluid mb-3"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer Section -->
+    <!-- <footer id="main-footer" class="mt-5 py-5 text-white bg-dark fixed-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center mx-auto">
+            <p class="lead">Copyright &copy; <span id="year"></span> Blogen</p>
+          </div>
+        </div>
+      </div>
+    </footer> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../scripts/utils.js"></script>
+    <script src="../scripts/dashboard.js"></script>
+    <script src="../scripts/tasksTableInitalizer.js"></script>
+    <script src="../scripts/pagination.js"></script>
+    <script src="../scripts/tasks.js"></script>
+
+    <script>
+      // Get the current year for the copyright
+      $("#year").text(new Date().getFullYear());
+    </script>
+  </body>
+</html>
