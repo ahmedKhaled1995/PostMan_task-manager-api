@@ -1,13 +1,20 @@
 # task-manager-api
 
-This project is setting the endpoints for a task manager app, which lets tou create an account and add tasks to your account.
-The user can also upload an avatar pic for their account.
+This project is a fully developed Task Manager app. The app uses Node js (express js) for the backend.
+Frontend code is fully written by plain JavaScrpt (ES6+). No jQuery was used.
+All server calls was handeled by JavaScript fetch API.
 
 The app uses MongoDb for storing the data, it's hosted on MongoDB Atlas.
 
 The app is hosted at : https://hassanin-task-manager.herokuapp.com
 
 The app accepts and sends JSON, the appliction user JWT (Json Web Tokens) bearer for authorization.
+
+There is still room for improvement like:
+-----------------------------------------
+1) improving Pagination.
+2) Allow user to upload avatar while creating the account (right now, you add the avatar after creating the profile).
+3) Allow filtering tasks by their completion state.
 
 some of the setup end points are:
 
