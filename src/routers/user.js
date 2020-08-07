@@ -141,7 +141,7 @@ router.post(
     req.authorizedUser.avatar = imageBuffer;
     //req.authorizedUser.avatar = req.file.buffer;             // note how I have access to req.file becuase I didn't use dest property in uplaoadAvatars onject
     await req.authorizedUser.save();
-    res.send();
+    res.send({ status: 200 });
   },
   (error, req, res, next) => {
     res

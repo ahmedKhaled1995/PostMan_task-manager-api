@@ -45,6 +45,7 @@ document.getElementById("img-upload").addEventListener("change", async (e) => {
   const formData = new FormData();
   formData.append("avatar", files[0]);
   let resp = await uploadImg("/users/me/avatar", formData, token);
+
   if (resp.error) {
     alert(resp.error);
     return;
