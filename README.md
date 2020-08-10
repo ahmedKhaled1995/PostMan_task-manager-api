@@ -1,4 +1,4 @@
-# task-manager-api
+# PostMan (Task-manager-api)
 
 This project is a fully developed Task Manager app. The app uses Node js (express js) for the backend.
 Frontend code is fully written by plain JavaScrpt (ES6+). No jQuery was used.
